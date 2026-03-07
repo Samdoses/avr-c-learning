@@ -16,8 +16,8 @@ All projects in this repository are written for and tested on:
 
 *(Click on any project folder to see its specific code, wiring instructions, and documentation).*
 
-* **[01-simple-blink](./01-simple-blink/)** - The "Hello World" of embedded C. Blinking the built-in LED (PB5) using direct port manipulation.
-* **[02-sos-beacon](./02-sos-beacon/)** - A 6-LED emergency SOS beacon demonstrating loops, delays, and manipulating the entire `PORTD` register simultaneously.
+* **[01-simple-blink](./1-simple-blink/)** - The "Hello World" of embedded C. Blinking the built-in LED (PB5) using direct port manipulation.
+* **[02-sos-beacon](./1.1-sos-beacon/)** - A 6-LED emergency SOS beacon demonstrating loops, delays, and manipulating the entire `PORTD` register simultaneously.
 
 ## The Toolchain
 These projects are compiled and flashed using the standard open-source AVR toolchain via the command line:
