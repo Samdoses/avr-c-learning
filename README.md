@@ -2,7 +2,7 @@
 
 This repository tracks my progress learning professional, bare-metal embedded C programming for the AVR microcontroller family. 
 
-Instead of using the beginner-friendly Arduino IDE and C++ libraries, these projects interact directly with the hardware registers of the chip (Bitwise operations, direct port manipulation, hardware timers, etc.). 
+Instead of using the beginner-friendly Arduino IDE, these projects interact directly with the hardware registers of the chip (Bitwise operations, direct port manipulation, hardware timers, etc.). 
 
 This learning journey follows the concepts taught in Elliot Williams' book: *Make: AVR Programming*.
 
