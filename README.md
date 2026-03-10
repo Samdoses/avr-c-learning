@@ -24,3 +24,11 @@ These projects are compiled and flashed using the standard open-source AVR toolc
 * `avr-gcc` (C Compiler)
 * `avrdude` (Flashing software targeting the Arduino bootloader)
 * `make` (Build automation)
+
+## Quick Start
+```bash
+# Compile the source code into a .hex binary
+make
+
+# Flash the binary to the microcontroller via USB
+make flash
