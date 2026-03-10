@@ -8,18 +8,18 @@
 int main(void) {
 
   // -------- Inits --------- //
-  DDRB |= 0b00100000;            /* Data Direction Register B:
+  DDRB |= (1 << 5);            /* Data Direction Register B:
                                    writing a one to the bit
                                    enables output. */
 
   // ------ Event loop ------ //
   while (1) {
 
-    PORTB = 0b00100000;   /*turn on PB5 pin*/
-    _delay_ms(1000);      /*wait 1 s*/
+    PORTB |= (1 << 5);   /*turn on PB5 pin*/
+    _delay_ms(1000);    /*wait 1 s*/
 
-    PORTB = 0b00000000;   /*turn off PB5 pin*/
-    _delay_ms(1000);      /*wait 1 s*/                                              /* End event loop */
+    PORTB &= ~(1 << 5);   /*turn off PB5 pin*/
+    _delay_ms(1000);    /*wait 1 s*/                                              /* End event loop */
   }
   return 0;                            /* This line is never reached */
 }
