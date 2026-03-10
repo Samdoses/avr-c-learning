@@ -4,11 +4,13 @@
 #include <avr/io.h>                        /* Defines pins, ports, etc */
 #include <util/delay.h>                     /* Functions to waste time */
 
+#define ALL_LEDS ((1 << 2) | (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6) | (1 << 7))
+
 
 int main(void) {
 
   // -------- Inits --------- //
-  DDRD |= 0b11111100;            /* Data Direction Register D:
+  DDRD |= ALL_LEDS;            /* Data Direction Register D:
                                    writing a one to the bit
                                    enables output. */
 
@@ -17,18 +19,18 @@ int main(void) {
 
     for(int i = 0; i < 9; i++){
       if(i < 3 || i >= 6){
-        PORTD = 0b11111100;   /*turn on PD2 -> PD7 pin*/
+        PORTD |= ALL_LEDS;   /*turn on PD2 -> PD7 pin*/
         _delay_ms(300);      /*wait 1 s*/
 
-        PORTD = 0b00000000;   /*turn off PD2 -> PD7 pin*/
+        PORTD &= ~ALL_LEDS;   /*turn off PD2 -> PD7 pin*/
         _delay_ms(300);      /*wait 1 s*/
       }
 
       else{
-        PORTD = 0b11111100;   /*turn on PD2 -> PD7 pin*/
+        PORTD |= ALL_LEDS;   /*turn on PD2 -> PD7 pin*/
         _delay_ms(900);      /*wait 0.3 s*/
 
-        PORTD = 0b00000000;   /*turn off PD2 -> PD7 pin*/
+        PORTD &= ~ALL_LEDS;   /*turn off PD2 -> PD7 pin*/
         _delay_ms(300);      /*wait 0.3 s*/
       }
     }
