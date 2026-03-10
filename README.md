@@ -26,9 +26,16 @@ These projects are compiled and flashed using the standard open-source AVR toolc
 * `make` (Build automation)
 
 ## Quick Start
+To compile and upload any of these projects, navigate into the specific project directory and run the `make` commands. 
+
+For example, to flash the simple blink project:
+
 ```bash
-# Compile the source code into a .hex binary
+# 1. Navigate into the project folder
+cd 01-simple-blink
+
+# 2. Compile the source code into a .hex binary
 make
 
-# Flash the binary to the microcontroller via USB
+# 3. Flash the binary to the microcontroller via USB
 make flash
