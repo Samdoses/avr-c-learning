@@ -19,4 +19,4 @@ This project is a foundational exercise in bare-metal embedded C programming, by
 make
 
 # Flash the binary to the microcontroller via USB
-make flashd
+make flash
