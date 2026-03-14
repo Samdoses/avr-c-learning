@@ -23,14 +23,14 @@ int main(void) {
     while (i < 7) {
       LED_PORT |= (1 << i);                 /* illuminate only i'th pin */
       _delay_ms(DELAYTIME);                                     /* wait */
-      LED_PORT &= ~(1 << i);
+      LED_PORT &= ~(1 << i);                    /* darken only i'th pin */
       i = i + 1;                                /* move to the next LED */
     }
 
     while (i > 2) {
       LED_PORT |= (1 << i);                /* illuminate only i'th pin */
       _delay_ms(DELAYTIME);                                    /* wait */
-      LED_PORT &= ~(1 << i);
+      LED_PORT &= ~(1 << i);                   /* darken only i'th pin */
       i = i - 1;                           /* move to the previous LED */
     }
   }
