@@ -12,7 +12,7 @@ The only change here is in DELAYTIME.
 #define LED_PORT PORTD
 #define LED_DDR  DDRD
 #define ALL_LEDS ((1 << 2) | (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6) | (1 << 7))
-#define DELAYTIME 600                                    /* milliseconds */
+#define DELAYTIME 200                                    /* milliseconds */
 
 int main(void) {
   uint8_t i=0;
