@@ -1,7 +1,7 @@
 # 04 - Inverse Cylon Scanner (ATmega328P)
 
 ## Project Overview
-A creative variation of the standard Cylon scanner that inverts the logical state. Instead of a single dot of light moving across a dark array, this firmware leaves the entire array illuminated and bounces a single "shadow" (a disabled LED) back and forth. 
+A variation of the standard Cylon scanner that inverts the logical state. Instead of a single dot of light moving across a dark array, this firmware leaves the entire array illuminated and bounces a single "shadow" (a disabled LED) back and forth. 
 
 ## Core Engineering Concepts Demonstrated
 * **Inverse Bitwise Masking:** Demonstrates advanced Read-Modify-Write techniques. It utilizes the bitwise NOT (`~`) operator in conjunction with AND (`&`) to safely punch a single "hole" (logic LOW) into a register full of logic HIGHs, without destructively overwriting the entire port.
