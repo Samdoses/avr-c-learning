@@ -18,8 +18,9 @@ All projects in this repository are written for and tested on:
 
 * **[1.0-simple-blink](./1.0-simple-blink/)** - The "Hello World" of embedded C. Blinking the built-in LED (PB5) using direct port manipulation.
 * **[1.1-sos-beacon](./1.1-sos-beacon/)** - A 6-LED emergency SOS beacon demonstrating loops, delays, and manipulating the entire `PORTD` register simultaneously.
-* **[2.0-cylon-eyes](.2.0-cylon-eyes/)** - A classic "Knight Rider" style LED scanner. Demonstrates using loop variables and dynamic bit-shifting (`1 << i`) to sequence hardware pins.
-* **[2.1-cylon-eyes-NOT](.2.1-cylon-eyes-NOT/)** - A inversion of the scanner that bounces a single "dark" shadow across a fully illuminated LED array.
+* **[2.0-cylon-eyes](./2.0-cylon-eyes/)** - A classic "Knight Rider" style LED scanner. Demonstrates using loop variables and dynamic bit-shifting (`1 << i`) to sequence hardware pins.
+* **[2.1-cylon-eyes-NOT](./2.1-cylon-eyes-NOT/)** - A inversion of the scanner that bounces a single "dark" shadow across a fully illuminated LED array.
+* **[2.2-binary-counter](./2.2-binary-counter/)** - An oscillating 6-bit binary counter.
 
 ## The Toolchain
 These projects are compiled and flashed using the standard open-source AVR toolchain via the command line:
