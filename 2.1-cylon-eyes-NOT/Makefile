@@ -1,1 +1,1 @@
-include ../Makefile.common
+include ../AVR-Programming-Library/Makefile.common
