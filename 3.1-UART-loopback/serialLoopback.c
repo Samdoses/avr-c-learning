@@ -27,10 +27,11 @@ int main(void) {
 
     serialCharacter = receiveByte();
     transmitByte(serialCharacter);
-    LED_PORT |= (serialCharacter << 2);
+    LED_PORT = serialCharacter;
+    _delay_ms(100);                                    /* wait */
+    LED_PORT &= ~(serialCharacter);
                            /* display ascii/numeric value of character */
-    _delay_ms(400);
-    LED_PORT &= ~ALL_LEDS;
+
   }                                                  /* End event loop */
   return 0;
 }
