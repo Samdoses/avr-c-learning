@@ -15,9 +15,9 @@ Discarded input sections
 
  .data          0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
  .bss           0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
- .text          0x00000000        0x0 2.2-binary-counter.o
- .data          0x00000000        0x0 2.2-binary-counter.o
- .bss           0x00000000        0x0 2.2-binary-counter.o
+ .text          0x00000000        0x0 toggleButton.o
+ .data          0x00000000        0x0 toggleButton.o
+ .bss           0x00000000        0x0 toggleButton.o
  .text          0x00000000        0x0 ../AVR-Programming-Library/USART.o
  .data          0x00000000        0x0 ../AVR-Programming-Library/USART.o
  .bss           0x00000000        0x0 ../AVR-Programming-Library/USART.o
@@ -128,7 +128,7 @@ Linker script and memory map
 
 Address of section .data set to 0x800100
 LOAD /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
-LOAD 2.2-binary-counter.o
+LOAD toggleButton.o
 LOAD ../AVR-Programming-Library/USART.o
 START GROUP
 LOAD /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a
@@ -236,7 +236,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000       0xe0
+.text           0x00000000       0xa2
  *(.vectors)
  .vectors       0x00000000       0x68 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
                 0x00000000                __vectors
@@ -321,13 +321,13 @@ END GROUP
                 0x00000080                        . = ALIGN (0x2)
  *(.text.*)
  .text.startup.main
-                0x00000080       0x5c 2.2-binary-counter.o
+                0x00000080       0x1e toggleButton.o
                 0x00000080                main
-                0x000000dc                        . = ALIGN (0x2)
+                0x0000009e                        . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000000dc        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_exit.o)
-                0x000000dc                exit
-                0x000000dc                _exit
+ .fini9         0x0000009e        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_exit.o)
+                0x0000009e                exit
+                0x0000009e                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -346,17 +346,17 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000000dc        0x4 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_exit.o)
+ .fini0         0x0000009e        0x4 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_exit.o)
  *(.fini0)
  *(.hightext)
  *(.hightext*)
  *(.progmemx.*)
-                0x000000e0                        . = ALIGN (0x2)
+                0x000000a2                        . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
-                0x000000e0                        _etext = .
+                0x000000a2                        _etext = .
 
-.data           0x00800100        0x0 load address 0x000000e0
+.data           0x00800100        0x0 load address 0x000000a2
                 [!provide]                        PROVIDE (__data_start = .)
  *(.data)
  *(.data*)
@@ -374,8 +374,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                        PROVIDE (__bss_end = .)
-                0x000000e0                        __data_load_start = LOADADDR (.data)
-                0x000000e0                        __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000000a2                        __data_load_start = LOADADDR (.data)
+                0x000000a2                        __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800100        0x0
                 [!provide]                        PROVIDE (__noinit_start = .)
@@ -422,7 +422,7 @@ END GROUP
 
 .comment        0x00000000       0x12
  *(.comment)
- .comment       0x00000000       0x12 2.2-binary-counter.o
+ .comment       0x00000000       0x12 toggleButton.o
                                  0x13 (size before relaxing)
 
 .note.gnu.avr.deviceinfo
@@ -451,35 +451,35 @@ END GROUP
 .debug_aranges  0x00000000       0x20
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x20 2.2-binary-counter.o
+                0x00000000       0x20 toggleButton.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x759
+.debug_info     0x00000000      0x6a2
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
- .debug_info    0x000005f4      0x165 2.2-binary-counter.o
+ .debug_info    0x000005f4       0xae toggleButton.o
 
-.debug_abbrev   0x00000000      0x685
+.debug_abbrev   0x00000000      0x60b
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
- .debug_abbrev  0x000005a2       0xe3 2.2-binary-counter.o
+ .debug_abbrev  0x000005a2       0x69 toggleButton.o
 
-.debug_line     0x00000000      0x190
+.debug_line     0x00000000       0xf9
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000       0x1d /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
- .debug_line    0x0000001d      0x173 2.2-binary-counter.o
+ .debug_line    0x0000001d       0xdc toggleButton.o
 
 .debug_frame    0x00000000       0x24
  *(.debug_frame)
- .debug_frame   0x00000000       0x24 2.2-binary-counter.o
+ .debug_frame   0x00000000       0x24 toggleButton.o
 
-.debug_str      0x00000000      0x359
+.debug_str      0x00000000      0x343
  *(.debug_str)
  .debug_str     0x00000000      0x208 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x151 2.2-binary-counter.o
-                                0x185 (size before relaxing)
+ .debug_str     0x00000208      0x13b toggleButton.o
+                                0x16f (size before relaxing)
 
 .debug_loc
  *(.debug_loc)
@@ -509,17 +509,17 @@ END GROUP
  *(.debug_addr)
 
 .debug_line_str
-                0x00000000       0x91
+                0x00000000       0x6c
  *(.debug_line_str)
  .debug_line_str
-                0x00000000       0x91 2.2-binary-counter.o
-                                 0xff (size before relaxing)
+                0x00000000       0x6c toggleButton.o
+                                 0xcd (size before relaxing)
 
 .debug_loclists
-                0x00000000       0x91
+                0x00000000       0x28
  *(.debug_loclists)
  .debug_loclists
-                0x00000000       0x91 2.2-binary-counter.o
+                0x00000000       0x28 toggleButton.o
 
 .debug_macro
  *(.debug_macro)
@@ -531,12 +531,12 @@ END GROUP
                 0x00000000       0x13
  *(.debug_rnglists)
  .debug_rnglists
-                0x00000000       0x13 2.2-binary-counter.o
+                0x00000000       0x13 toggleButton.o
 
 .debug_str_offsets
  *(.debug_str_offsets)
 
 .debug_sup
  *(.debug_sup)
-OUTPUT(2.2-binary-counter.elf elf32-avr)
+OUTPUT(4.1-Toggle-Button.elf elf32-avr)
 LOAD linker stubs
