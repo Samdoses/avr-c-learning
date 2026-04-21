@@ -5,6 +5,7 @@
 // ------- Preamble -------- //
 #include <avr/io.h>
 #include "pinDefines.h"
+#include <util/delay.h>
 
 #include <util/delay.h>
 #define DEBOUNCE_TIME  2                               /* microseconds */
