@@ -384,33 +384,33 @@ END GROUP
  *(.jumptables*)
                 0x00000148                        _etext = .
 
-.data           0x00800100       0x52 load address 0x00000148
+.data           0x00800100       0x76 load address 0x00000148
                 0x00800100                        PROVIDE (__data_start = .)
  *(.data)
  *(.data*)
  *(.gnu.linkonce.d*)
  *(.rodata)
- .rodata        0x00800100       0x52 avrMusicBox.o
+ .rodata        0x00800100       0x76 avrMusicBox.o
  *(.rodata*)
  *(.gnu.linkonce.r*)
-                0x00800152                        . = ALIGN (0x2)
-                0x00800152                        _edata = .
-                0x00800152                        PROVIDE (__data_end = .)
+                0x00800176                        . = ALIGN (0x2)
+                0x00800176                        _edata = .
+                0x00800176                        PROVIDE (__data_end = .)
 
-.bss            0x00800152        0x0
+.bss            0x00800176        0x0
                 [!provide]                        PROVIDE (__bss_start = .)
  *(.bss)
  *(.bss*)
  *(COMMON)
                 [!provide]                        PROVIDE (__bss_end = .)
                 0x00000148                        __data_load_start = LOADADDR (.data)
-                0x0000019a                        __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000001be                        __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800152        0x0
+.noinit         0x00800176        0x0
                 [!provide]                        PROVIDE (__noinit_start = .)
  *(.noinit .noinit.* .gnu.linkonce.n.*)
                 [!provide]                        PROVIDE (__noinit_end = .)
-                0x00800152                        _end = .
+                0x00800176                        _end = .
                 [!provide]                        PROVIDE (__heap_start = .)
                 0x00000000                        __flmap_init_label = DEFINED (__flmap_noinit_start)?__flmap_noinit_start:0x0
                 0x00000000                        __flmap = DEFINED (__flmap)?__flmap:0x0

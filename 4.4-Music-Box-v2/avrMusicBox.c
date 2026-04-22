@@ -11,12 +11,16 @@
 
 int main(void) {
   const uint16_t song[] = {
-    E6, E6, E6, C6, E6, G6, G5,
-    C6, G5, E5, A5, B5, Ax5, A5,
-    G5, E6, G6, A6, F6, G6, E6, C6, D6, B5,
-    C6, G5, E5, A5, B5, Ax5, A5,
-    G5, E6, G6, A6, F6, G6, E6, C6, D6, B5,
-    /* etc */
+    G5, G5, G5, E5, E5, E5,
+    C5, C5, C5, G4, G4, G4,
+    A4, B4, C5, A4, A4, C5,
+    G4, G4, G4, G4, G4, G4,
+    D5, D5, D5, G5, G5, G5,
+    E5, E5, E5, C5, C5, C5,
+    A4, B4, C5, D5, D5, E5,
+    D5, D5, D5, D5, D5,
+    E5, F5, E5, D5, G5, G5,
+    E5, D5, C5, C5, C5, C5,
   };
   /* starting at end b/c routine starts by incrementing and then playing
    *     this makes the song start at the beginning after reboot */
@@ -32,7 +36,7 @@ int main(void) {
     if (bit_is_clear(BUTTON_PIN, BUTTON)) {
       if (!wasButtonPressed) {              /* if it's a new press ... */
         for (int whichNote = 0; whichNote <= sizeof(song); whichNote++){
-          playNote(song[whichNote], 100000);
+          playNote(song[whichNote], 300000);
         }
         wasButtonPressed = 1;
       }
