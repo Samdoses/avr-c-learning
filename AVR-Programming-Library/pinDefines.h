@@ -2,18 +2,18 @@
 //   Pin Defines
 // ---------------
 
-#define LED_PORT                PORTB
-#define LED_PIN                 PINB
-#define LED_DDR                 DDRB
+#define LED_PORT                PORTD
+#define LED_PIN                 PIND
+#define LED_DDR                 DDRD
 
-#define LED0                    PB0
-#define LED1                    PB1
-#define LED2                    PB2
-#define LED3                    PB3
-#define LED4                    PB4
-#define LED5                    PB5
-#define LED6                    PB6
-#define LED7                    PB7
+#define LED0                    PD0
+#define LED1                    PD1
+//#define LED2                    PD2
+#define LED3                    PD3
+#define LED4                    PD4
+#define LED5                    PD5
+#define LED6                    PD6
+#define LED7                    PD7
 
 #define BUTTON_PORT             PORTD
 #define BUTTON_PIN              PIND
@@ -23,10 +23,10 @@
 #define BUTTON2                 PD3
 #define BUTTON3                 PD4
 
-#define SPEAKER                 PD6                            /* OC0A */
-#define SPEAKER_PORT            PORTD
-#define SPEAKER_PIN             PIND
-#define SPEAKER_DDR             DDRD
+#define SPEAKER                 PB6                            /* OC0A */
+#define SPEAKER_PORT            PORTB
+#define SPEAKER_PIN             PINB
+#define SPEAKER_DDR             DDRB
 
 #define ANTENNA                 PD5                            /* OC0B */
 #define ANTENNA_PORT            PORTD
