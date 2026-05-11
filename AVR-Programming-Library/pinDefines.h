@@ -12,7 +12,7 @@
 #define LED3                    PD3
 #define LED4                    PD4
 #define LED5                    PD5
-#define LED6                    PD6
+//#define LED6                    PD6
 #define LED7                    PD7
 
 #define BUTTON_PORT             PORTD
@@ -23,10 +23,10 @@
 #define BUTTON2                 PD3
 #define BUTTON3                 PD4
 
-#define SPEAKER                 PB6                            /* OC0A */
-#define SPEAKER_PORT            PORTB
-#define SPEAKER_PIN             PINB
-#define SPEAKER_DDR             DDRB
+#define SPEAKER                 PD6                            /* OC0A */
+#define SPEAKER_PORT            PORTD
+#define SPEAKER_PIN             PIND
+#define SPEAKER_DDR             DDRD
 
 #define ANTENNA                 PD5                            /* OC0B */
 #define ANTENNA_PORT            PORTD
