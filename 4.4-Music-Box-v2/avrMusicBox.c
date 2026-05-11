@@ -31,13 +31,17 @@ int main(void) {
   SPEAKER_DDR |= (1 << SPEAKER);                 /* speaker for output */
   BUTTON_PORT |= (1 << BUTTON);                    /* pullup on button */
 
+  LED_DDR |= (1 << LED7);
+
   // ------ Event loop ------ //
   while (1) {
     if (bit_is_clear(BUTTON_PIN, BUTTON)) {
       if (!wasButtonPressed) {              /* if it's a new press ... */
-        for (int whichNote = 0; whichNote <= sizeof(song); whichNote++){
+        LED_PORT |= (1 << LED7);
+        for (int whichNote = 0; whichNote < SONG_LENGTH; whichNote++){
           playNote(song[whichNote], 300000);
         }
+        LED_PORT &= ~(1 << LED7);
         wasButtonPressed = 1;
       }
     }

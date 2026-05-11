@@ -9,7 +9,7 @@
 #define LED_DDR  DDRD
 #define ALL_LEDS ((1 << 2) | (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6) | (1 << 7))
 #define SONG_LENGTH  (sizeof(song) / sizeof(uint16_t))
-#define DELAYTIME 300                                    /* milliseconds */
+#define DELAYTIME 400                                    /* milliseconds */
 
 int main(void) {
   const uint16_t song[] = {
