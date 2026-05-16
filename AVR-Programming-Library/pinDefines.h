@@ -28,6 +28,11 @@
 #define SPEAKER_PIN             PIND
 #define SPEAKER_DDR             DDRD
 
+#define SPEAKER                 PD6                            /* OC1A */
+#define SPEAKER_PORT            PORTD
+#define SPEAKER_PIN             PIND
+#define SPEAKER_DDR             DDRD
+
 #define ANTENNA                 PD5                            /* OC0B */
 #define ANTENNA_PORT            PORTD
 #define ANTENNA_PIN             PIND
