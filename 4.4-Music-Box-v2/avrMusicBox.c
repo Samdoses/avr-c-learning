@@ -28,7 +28,8 @@ int main(void) {
   uint8_t wasButtonPressed = 0;
 
   // -------- Inits --------- //
-  SPEAKER_DDR |= (1 << SPEAKER);                 /* speaker for output */
+  initTimer();                                      /*initialise the timers*/
+  SPEAKER_16_DDR |= (1 << SPEAKER_16);                 /* speaker for output */
   BUTTON_PORT |= (1 << BUTTON);                    /* pullup on button */
 
   LED_DDR |= (1 << LED7);
@@ -39,7 +40,7 @@ int main(void) {
       if (!wasButtonPressed) {              /* if it's a new press ... */
         LED_PORT |= (1 << LED7);
         for (int whichNote = 0; whichNote < SONG_LENGTH; whichNote++){
-          playNote(song[whichNote], 300000);
+          playNote(song[whichNote], 300);
         }
         LED_PORT &= ~(1 << LED7);
         wasButtonPressed = 1;

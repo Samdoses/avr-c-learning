@@ -32,7 +32,7 @@ def makeDefines(basePitch, numOctaves):
 if __name__ == "__main__":
     
     ## Change these if you like
-    BASEPITCH = 10000
+    BASEPITCH = 61162
     OCTAVES   = 8
     OUTFILE   = "scale16.h"
     
