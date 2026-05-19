@@ -41,6 +41,9 @@ int main(void) {
         LED_PORT |= (1 << LED7);
         for (int whichNote = 0; whichNote < SONG_LENGTH; whichNote++){
           playNote(song[whichNote], 300);
+          if (bit_is_clear(BUTTON_PIN, BUTTON)){
+            break;
+          }
         }
         LED_PORT &= ~(1 << LED7);
         wasButtonPressed = 1;
