@@ -8,6 +8,21 @@
 #include "pinDefines.h"
 
 #define SONG_LENGTH  (sizeof(song) / sizeof(uint16_t))
+#define DEBOUNCE_TIME 4
+
+
+//-- Debounce method --//
+uint8_t debouncePress(void){
+  if (bit_is_clear(BUTTON_PIN, BUTTON)){
+    _delay_ms(DEBOUNCE_TIME);
+  }
+  if (bit_is_clear(BUTTON_PIN, BUTTON)){
+    return(1);
+  }
+  else{
+    return(0);
+  }
+}
 
 int main(void) {
   const uint16_t song[] = {
@@ -36,13 +51,13 @@ int main(void) {
 
   // ------ Event loop ------ //
   while (1) {
-    if (bit_is_clear(BUTTON_PIN, BUTTON)) {
+    if (debouncePress()) {
       if (!wasButtonPressed) {              /* if it's a new press ... */
         LED_PORT |= (1 << LED7);
         for (int whichNote = 0; whichNote < SONG_LENGTH; whichNote++){
           playNote(song[whichNote], 300);
-          if (bit_is_clear(BUTTON_PIN, BUTTON)){
-            break;
+          if (debouncePress()){
+            break;                          /*if the button is clicked end the song*/
           }
         }
         LED_PORT &= ~(1 << LED7);
