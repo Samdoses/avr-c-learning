@@ -21,9 +21,19 @@ void initTimer(void) {
 }
 
 void playNote(uint8_t periodL, uint16_t periodR, uint16_t duration) {
+  int note1+=periodL;
+  int note2+=duration;
+
+  if (note1>pitch1){
+    //trigger speaker with XOR
+  }
+  if (note2>pitch2){
+    //also trigger speaker with xor
+  }
+
   //left hand notes
   TCNT0 = 0;                                      /* reset the counter */
-  OCR0A = periodL;                                     /* set pitch */
+  OCR0A = 10; /*period = time before interupt to increment*/                                    /* set pitch */
   SPEAKER_DDR |= (1 << SPEAKER);           /* enable output on speaker */
 
   while (duration) {                                 /* Variable delay */
