@@ -4,11 +4,11 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "organ.h"
-#include "scale8.h"
-#include "scale16.h"
+#include "scale.h"
 #include "pinDefines.h"
+#include <avr/interrupt.h>
 
-#define SONG_LENGTH  (sizeof(song) / sizeof(uint16_t))
+#define SONG_LENGTH  (sizeof(song) / sizeof(song[0])) /*the sizeof method determines the memory size of data structure so this calc will find the number of elements*/
 #define DEBOUNCE_TIME 4
 
 
@@ -31,31 +31,16 @@ uint8_t debouncePress(void){
  *play both simultaniously in the playnote method???*/
 int main(void) {
 
-  typedef struct {
+  struct Note {
     char noteName;
-    int leftNote;
-    int rightNote;
-  }
-
-  const uint16_t song[] = {
-    0, 0,
-    A3, A3, F4, F4, A3, E4, E4, D4, D4,
-    0, 0, 0, 0, 0, 0, 0,
-    Ax3, Ax3,
-    D4, F4, D4, A4, A4, G4, G4,
-    F4, F4, G4, F4, A3, A3, F4, F4,
-    A3, E4, E4, D4, D4, Ax3, Ax3, Cx4,
-    F4, Cx4, A4, A4,  G4, G4, F4, F4, G4,
-    F4, A3, A3, F4, F4, A3, E4, E4, D4, D4, Ax3,
-    Ax3, D4, F4, D4, A4, A4, G4, G4, F4, F4, G4, G4,
-    A3, A3, F4, F4, A3, E4, E4, D4, D4, Ax3, Ax3, Cx4,
-    F4, Cx4, A4, A4, G4, G4, F4, F4, G4, F4
+    int note1;
+    int note2;
   };
 
-  const Note song[] = {
-    {'A', LF2, 0}, {'A', LF2, 0}, {'A', LF2, A3}, {'A', LF2, A3},
-    {'A', LF2, F4}, {'A', LF2, F4}, {'A', LF2, A3}, {'A', LF2, E4},
-  }
+  const struct Note song[] = {
+    {'A', DDS(F4), 0}, {'A', DDS(F4), 0}, {'A', DDS(F4), DDS(A5)}, {'A', DDS(F4), DDS(A5)},
+    {'A', DDS(F4), DDS(F6)}, {'A', DDS(F4), DDS(F6)}, {'A', DDS(F4), DDS(A6)}, {'A', DDS(F4), DDS(E6)},
+  };
 
   /* starting at end b/c routine starts by incrementing and then playing
    *     this makes the song start at the beginning after reboot */
@@ -63,11 +48,11 @@ int main(void) {
   uint8_t wasButtonPressed = 0;
 
   // -------- Inits --------- //
-  initTimer();                                      /*initialise the timers*/
-  SPEAKER_16_DDR |= (1 << SPEAKER_16);                 /* speaker for output */
+  initTimer();                                     /*initialise the timers*/
+  SPEAKER_16_DDR |= (1 << SPEAKER_16);             /* speaker for output */
   BUTTON_PORT |= (1 << BUTTON);                    /* pullup on button */
-
-  LED_DDR |= (1 << LED7);
+  LED_DDR |= (1 << LED7);                          /* enable output for led */
+  sei();                                           /* Enable global interrupts */
 
   // ------ Event loop ------ //
   while (1) {
@@ -75,7 +60,7 @@ int main(void) {
       if (!wasButtonPressed) {              /* if it's a new press ... */
         LED_PORT |= (1 << LED7);
         for (int whichNote = 0; whichNote < SONG_LENGTH; whichNote++){
-          playNote(song[whichNote], 300);
+          playNote(song[whichNote].note1, song[whichNote].note2, 150);
           if (debouncePress()){
             break;                          /*if the button is clicked end the song*/
           }

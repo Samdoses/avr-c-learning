@@ -7,48 +7,53 @@ Simple routines to play notes out to a speaker
 #include <util/delay.h>
 #include "organ.h"
 #include "pinDefines.h"
+#include <avr/interrupt.h>
+
+
+volatile uint16_t phaseAcc1 = 0;      /*Phase accumulators keep track of where we are in the sound wave (speaker only turns on at 32,000)*/
+volatile uint16_t phaseAcc2 = 0;
+
+
+volatile uint16_t note1 = 0;          /* The pitch of the note */
+volatile uint16_t note2 = 0;
 
 void initTimer(void) {
-  //16 bit timer for right hand notes
-  TCCR1B |= (1 << WGM12);                               /* CTC mode */
-  TCCR1A |= (1 << COM1A0);          /* Toggles pin each cycle through */
-  TCCR1B |= (1 << CS11);                            /* CPU clock / 8 */
-
-  //8 bit timer for left hand notes
   TCCR0A |= (1 << WGM01);                                  /* CTC mode */
   TCCR0A |= (1 << COM0A0);           /* Toggles pin each cycle through */
-  TCCR0B |= (1 << CS00) | (1 << CS01);               /* CPU clock / 64 */
+  TCCR0B |= (1 << CS01);               /* CPU clock / 8 */
+  TIMSK0 |= (1 << OCIE0A);                                  /* Enable Timer0 Compare Match Interrupt */
+
+  OCR0A = 63;                               /* *Set Compare Match Value for 31.25 kHz (a good balance between speed and CPU usage)
+                                               *Formula: (16,000,000 / (8 * 31250)) - 1 = 63  */
 }
 
-void playNote(uint8_t periodL, uint16_t periodR, uint16_t duration) {
-  int note1+=periodL;
-  int note2+=duration;
-
-  if (note1>pitch1){
-    //trigger speaker with XOR
-  }
-  if (note2>pitch2){
-    //also trigger speaker with xor
-  }
-
-  //left hand notes
-  TCNT0 = 0;                                      /* reset the counter */
-  OCR0A = 10; /*period = time before interupt to increment*/                                    /* set pitch */
-  SPEAKER_DDR |= (1 << SPEAKER);           /* enable output on speaker */
+void playNote(uint16_t period1, uint16_t period2, uint16_t duration) {
+  note1 = period1;
+  note2 = period2;
 
   while (duration) {                                 /* Variable delay */
     _delay_ms(1);
     duration--;
   }
-  SPEAKER_DDR &= ~(1 << SPEAKER);                  /* turn speaker off */
 
-  //right hand notes
-  TCNT1 = 0;                                  /* reset the counter */
-  OCR1A = periodR;                                     /* set pitch */
-  SPEAKER_16_DDR |= (1 << SPEAKER_16);      /* enable output on speaker */
-  while (duration) {                              /* Variable delay */
-    _delay_ms(1);
-    duration--;
+  note1 = 0;                                          /*disable notes after the delay is over*/
+  note2 = 0;
+}
+
+/* --- THE ISR (Fires exactly 31,250 times a second) --- */
+ISR(TIMER0_COMPA_vect) {
+  // 1. Increment Acc by the note's pitch
+  phaseAcc1 += note1;
+  phaseAcc2 += note2;
+
+  // 2. Extract the most significant bit (Bit 15) where 1 represents speaker ON and 0 represents speaker OFF
+  uint8_t wave1 = (phaseAcc1 >> 15);
+  uint8_t wave2 = (phaseAcc2 >> 15);
+
+  // 3. Mix the waves using XOR and output to the speaker
+  if (wave1 ^ wave2) {
+    SPEAKER_16_PORT |= (1 << SPEAKER_16);  // Turn speaker pin HIGH
+  } else {
+    SPEAKER_16_PORT &= ~(1 << SPEAKER_16); // Turn speaker pin LOW
   }
-  SPEAKER_16_DDR &= ~(1 << SPEAKER_16);             /* turn speaker off */
 }
