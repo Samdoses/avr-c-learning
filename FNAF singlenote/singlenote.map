@@ -389,33 +389,33 @@ END GROUP
  *(.jumptables*)
                 0x00000176                        _etext = .
 
-.data           0x00800100       0x76 load address 0x00000176
+.data           0x00800100       0xc2 load address 0x00000176
                 0x00800100                        PROVIDE (__data_start = .)
  *(.data)
  *(.data*)
  *(.gnu.linkonce.d*)
  *(.rodata)
- .rodata        0x00800100       0x76 avrMusicBox.o
+ .rodata        0x00800100       0xc2 avrMusicBox.o
  *(.rodata*)
  *(.gnu.linkonce.r*)
-                0x00800176                        . = ALIGN (0x2)
-                0x00800176                        _edata = .
-                0x00800176                        PROVIDE (__data_end = .)
+                0x008001c2                        . = ALIGN (0x2)
+                0x008001c2                        _edata = .
+                0x008001c2                        PROVIDE (__data_end = .)
 
-.bss            0x00800176        0x0
+.bss            0x008001c2        0x0
                 [!provide]                        PROVIDE (__bss_start = .)
  *(.bss)
  *(.bss*)
  *(COMMON)
                 [!provide]                        PROVIDE (__bss_end = .)
                 0x00000176                        __data_load_start = LOADADDR (.data)
-                0x000001ec                        __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000238                        __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800176        0x0
+.noinit         0x008001c2        0x0
                 [!provide]                        PROVIDE (__noinit_start = .)
  *(.noinit .noinit.* .gnu.linkonce.n.*)
                 [!provide]                        PROVIDE (__noinit_end = .)
-                0x00800176                        _end = .
+                0x008001c2                        _end = .
                 [!provide]                        PROVIDE (__heap_start = .)
                 0x00000000                        __flmap_init_label = DEFINED (__flmap_noinit_start)?__flmap_noinit_start:0x0
                 0x00000000                        __flmap = DEFINED (__flmap)?__flmap:0x0
@@ -551,21 +551,21 @@ END GROUP
  *(.debug_addr)
 
 .debug_line_str
-                0x00000000       0x98
+                0x00000000       0xd9
  *(.debug_line_str)
  .debug_line_str
-                0x00000000       0x98 avrMusicBox.o
-                                 0xee (size before relaxing)
+                0x00000000       0xd9 avrMusicBox.o
+                                 0xec (size before relaxing)
  .debug_line_str
-                0x00000098       0xd4 organ.o
+                0x000000d9       0xd4 organ.o
 
 .debug_loclists
-                0x00000000       0xdb
+                0x00000000       0xda
  *(.debug_loclists)
  .debug_loclists
-                0x00000000       0x5c avrMusicBox.o
+                0x00000000       0x5b avrMusicBox.o
  .debug_loclists
-                0x0000005c       0x7f organ.o
+                0x0000005b       0x7f organ.o
 
 .debug_macro
  *(.debug_macro)
@@ -586,5 +586,5 @@ END GROUP
 
 .debug_sup
  *(.debug_sup)
-OUTPUT(4.4-Music-Box-v2.elf elf32-avr)
+OUTPUT(singlenote.elf elf32-avr)
 LOAD linker stubs

@@ -560,12 +560,12 @@ END GROUP
                 0x00000098       0xd4 organ.o
 
 .debug_loclists
-                0x00000000       0xdb
+                0x00000000       0xda
  *(.debug_loclists)
  .debug_loclists
-                0x00000000       0x5c avrMusicBox.o
+                0x00000000       0x5b avrMusicBox.o
  .debug_loclists
-                0x0000005c       0x7f organ.o
+                0x0000005b       0x7f organ.o
 
 .debug_macro
  *(.debug_macro)

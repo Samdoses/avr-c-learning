@@ -8,7 +8,7 @@
 #include "pinDefines.h"
 
 #define SONG_LENGTH  (sizeof(song) / sizeof(uint16_t))
-#define DEBOUNCE_TIME 8
+#define DEBOUNCE_TIME 4
 
 
 //-- Debounce method --//
@@ -26,16 +26,19 @@ uint8_t debouncePress(void){
 
 int main(void) {
   const uint16_t song[] = {
-    G5, G5, G5, E5, E5, E5,
-    C5, C5, C5, G4, G4, G4,
-    A4, B4, C5, A4, A4, C5,
-    G4, G4, G4, G4, G4, G4,
-    D5, D5, D5, G5, G5, G5,
-    E5, E5, E5, C5, C5, C5,
-    A4, B4, C5, D5, D5, E5,
-    D5, D5, D5, D5, D5,
-    E5, F5, E5, D5, G5, G5,
-    E5, D5, C5, C5, C5, C5,
+
+    0, 0,
+    A3, A3, F4, F4, A3, E4, E4, D4, D4,
+    0, 0, 0, 0, 0, 0, 0,
+    Ax3, Ax3,
+    D4, F4, D4, A4, A4, G4, G4,
+    F4, F4, G4, F4, A3, A3, F4, F4,
+    A3, E4, E4, D4, D4, Ax3, Ax3, Cx4,
+    F4, Cx4, A4, A4,  G4, G4, F4, F4, G4,
+    F4, A3, A3, F4, F4, A3, E4, E4, D4, D4, Ax3,
+    Ax3, D4, F4, D4, A4, A4, G4, G4, F4, F4, G4, G4,
+    A3, A3, F4, F4, A3, E4, E4, D4, D4, Ax3, Ax3, Cx4,
+    F4, Cx4, A4, A4, G4, G4, F4, F4, G4, F4
   };
   /* starting at end b/c routine starts by incrementing and then playing
    *     this makes the song start at the beginning after reboot */
