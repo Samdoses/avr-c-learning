@@ -26,16 +26,19 @@ uint8_t debouncePress(void){
 
 int main(void) {
   const uint16_t song[] = {
-
-    0, 0,
-    A3, A3, F4, F4, A3, E4, E4, D4, D4,
-    0, 0, 0, 0, 0, 0, 0,
-    Ax3, Ax3,
-    D4, F4, D4, A4, A4, G4, G4,
-    F4, F4, G4, F4, A3, A3, F4, F4,
-    A3, E4, E4, D4, D4, Ax3, Ax3, Cx4,
-    F4, Cx4, A4, A4,  G4, G4, F4, F4, G4,
-    F4, A3, A3, F4, F4, A3, E4, E4, D4, D4, Ax3,
+    A3, A3, F4, F4, A3, E4, E4,
+    D4, D4, D4, D4, D4,
+    Ax3, Ax3, D4, F4, D4,
+    A4, A4,
+    G4, G4, F4, F4, G4,
+    F4, F4,
+    A3, A3, F4, F4, A3, E4, E4,
+    D4, D4, D4, D4, D4,
+    Ax3, Ax3, Cx4, F4, Cx4,
+    A4, A4, A4,
+    G4, G4, F4, F4, G4,
+    F4, F4,
+    A3, A3, F4, F4, A3, E4, E4, D4, D4, Ax3,
     Ax3, D4, F4, D4, A4, A4, G4, G4, F4, F4, G4, G4,
     A3, A3, F4, F4, A3, E4, E4, D4, D4, Ax3, Ax3, Cx4,
     F4, Cx4, A4, A4, G4, G4, F4, F4, G4, F4
@@ -63,6 +66,7 @@ int main(void) {
             break;                          /*if the button is clicked end the song*/
           }
         }
+        SPEAKER_16_DDR &= ~(1 << SPEAKER_16);             /* turn speaker off */
         LED_PORT &= ~(1 << LED7);
         wasButtonPressed = 1;
       }
