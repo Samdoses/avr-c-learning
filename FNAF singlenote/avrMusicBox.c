@@ -60,13 +60,14 @@ int main(void) {
     if (debouncePress()) {
       if (!wasButtonPressed) {              /* if it's a new press ... */
         LED_PORT |= (1 << LED7);
+        SPEAKER_16_DDR |= (1 << SPEAKER_16);             /* enable speaker output */
         for (int whichNote = 0; whichNote < SONG_LENGTH; whichNote++){
           playNote(song[whichNote], 300);
           if (debouncePress()){
             break;                          /*if the button is clicked end the song*/
           }
         }
-        SPEAKER_16_DDR &= ~(1 << SPEAKER_16);             /* turn speaker off */
+        SPEAKER_16_DDR &= ~(1 << SPEAKER_16);             /* disable speaker output */
         LED_PORT &= ~(1 << LED7);
         wasButtonPressed = 1;
       }
