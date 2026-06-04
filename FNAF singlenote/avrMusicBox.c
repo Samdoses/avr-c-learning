@@ -38,9 +38,9 @@ int main(void) {
     A4, A4, A4,
     G4, G4, F4, F4, G4,
     F4, F4,
-    A3, A3, F4, F4, A3, E4, E4, D4, D4, Ax3,
-    Ax3, D4, F4, D4, A4, A4, G4, G4, F4, F4, G4, G4,
-    A3, A3, F4, F4, A3, E4, E4, D4, D4, Ax3, Ax3, Cx4,
+    A3, A3, F4, F4, A3, E4, E4, D4, D4, Ax3, Ax3,
+    D4, F4, D4, A4, A4, G4, G4, F4, F4,G4, G4,
+    A3, A3, F4, F4, A3, E4, E4, D4, D4, Ax4, Ax4, Cx4,
     F4, Cx4, A4, A4, G4, G4, F4, F4, G4, F4
   };
   /* starting at end b/c routine starts by incrementing and then playing
