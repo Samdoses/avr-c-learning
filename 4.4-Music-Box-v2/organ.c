@@ -1,6 +1,6 @@
 /*
-Simple routines to play notes out to a speaker
-*/
+ * Simple routines to play notes out to a speaker
+ */
 
 
 #include <avr/io.h>
@@ -16,12 +16,15 @@ void initTimer(void) {
 
 void playNote(uint16_t period, uint16_t duration) {
 
-  TCNT1 = 0;                                  /* reset the counter */
+  /* Only reset the timer if it exceeds the new pitch threshold to prevent overflow gaps */
+  if (TCNT1 > period) {
+    TCNT1 = 0;
+  }
+
   OCR1A = period;                                     /* set pitch */
-  SPEAKER_16_DDR |= (1 << SPEAKER_16);      /* enable output on speaker */
+  SPEAKER_16_PORT |= (1 << SPEAKER_16);      /* enable output on speaker */
   while (duration) {                              /* Variable delay */
     _delay_ms(1);
     duration--;
   }
-  SPEAKER_16_DDR &= ~(1 << SPEAKER_16);             /* turn speaker off */
 }
