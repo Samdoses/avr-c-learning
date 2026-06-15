@@ -1,5 +1,9 @@
 Archive member included to satisfy reference by file (symbol)
 
+/usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodqi4.o)
+                              ../AVR-Programming-Library/USART.o (__udivmodqi4)
+/usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodhi4.o)
+                              ../AVR-Programming-Library/USART.o (__udivmodhi4)
 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/libatmega328p.a(init_sp.o)
                               /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o (__init_sp)
 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/libatmega328p.a(call_main.o)
@@ -14,6 +18,77 @@ Discarded input sections
  .text          0x00000000        0x0 blinkLED.o
  .data          0x00000000        0x0 blinkLED.o
  .bss           0x00000000        0x0 blinkLED.o
+ .text          0x00000000        0x0 ../AVR-Programming-Library/USART.o
+ .data          0x00000000        0x0 ../AVR-Programming-Library/USART.o
+ .bss           0x00000000        0x0 ../AVR-Programming-Library/USART.o
+ .text.initUSART
+                0x00000000       0x22 ../AVR-Programming-Library/USART.o
+ .text.transmitByte
+                0x00000000        0xe ../AVR-Programming-Library/USART.o
+ .text.receiveByte
+                0x00000000        0xe ../AVR-Programming-Library/USART.o
+ .text.printString
+                0x00000000       0x3a ../AVR-Programming-Library/USART.o
+ .text.readString
+                0x00000000       0x68 ../AVR-Programming-Library/USART.o
+ .text.printByte
+                0x00000000       0x3c ../AVR-Programming-Library/USART.o
+ .text.printWord
+                0x00000000       0x84 ../AVR-Programming-Library/USART.o
+ .text.printBinaryByte
+                0x00000000       0x44 ../AVR-Programming-Library/USART.o
+ .text.nibbleToHexCharacter
+                0x00000000        0xc ../AVR-Programming-Library/USART.o
+ .text.printHexByte
+                0x00000000       0x1e ../AVR-Programming-Library/USART.o
+ .text.getNumber
+                0x00000000       0x46 ../AVR-Programming-Library/USART.o
+ .debug_info    0x00000000      0x3e2 ../AVR-Programming-Library/USART.o
+ .debug_abbrev  0x00000000      0x138 ../AVR-Programming-Library/USART.o
+ .debug_loclists
+                0x00000000      0x286 ../AVR-Programming-Library/USART.o
+ .debug_aranges
+                0x00000000       0x70 ../AVR-Programming-Library/USART.o
+ .debug_rnglists
+                0x00000000       0x50 ../AVR-Programming-Library/USART.o
+ .debug_line    0x00000000      0x5ba ../AVR-Programming-Library/USART.o
+ .debug_str     0x00000000      0x236 ../AVR-Programming-Library/USART.o
+ .debug_line_str
+                0x00000000       0xee ../AVR-Programming-Library/USART.o
+ .comment       0x00000000       0x13 ../AVR-Programming-Library/USART.o
+ .debug_frame   0x00000000      0x150 ../AVR-Programming-Library/USART.o
+ .text          0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodqi4.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodqi4.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodqi4.o)
+ .text.libgcc.mul
+                0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodqi4.o)
+ .text.libgcc.div
+                0x00000000       0x18 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodqi4.o)
+ .text.libgcc   0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodqi4.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodqi4.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodqi4.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodqi4.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodqi4.o)
+ .text          0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.mul
+                0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.div
+                0x00000000       0x28 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc   0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_udivmodhi4.o)
  .text          0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/libatmega328p.a(init_sp.o)
  .data          0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/libatmega328p.a(init_sp.o)
  .bss           0x00000000        0x0 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/libatmega328p.a(init_sp.o)
@@ -54,6 +129,7 @@ Linker script and memory map
 Address of section .data set to 0x800100
 LOAD /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
 LOAD blinkLED.o
+LOAD ../AVR-Programming-Library/USART.o
 START GROUP
 LOAD /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a
 LOAD /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/libm.a

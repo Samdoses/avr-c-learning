@@ -9,3 +9,6 @@ void playNote(uint16_t period, uint16_t duration);
 void rest(uint16_t duration);
 
 void initTimer(void);
+
+/*Stores the number of ms since the start of the program*/
+extern volatile uint32_t system_millis;

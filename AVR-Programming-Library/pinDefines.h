@@ -8,11 +8,11 @@
 
 #define LED0                    PD0
 #define LED1                    PD1
-//#define LED2                    PD2
+#define LED2                    PD2
 #define LED3                    PD3
 #define LED4                    PD4
 #define LED5                    PD5
-//#define LED6                    PD6
+#define LED6                    PD6
 #define LED7                    PD7
 
 #define BUTTON_PORT             PORTD
