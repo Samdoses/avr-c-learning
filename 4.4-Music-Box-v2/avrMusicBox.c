@@ -81,16 +81,31 @@ ISR(TIMER0_COMPA_vect) {
 }
 
 //-- Debounce method --//
-uint8_t debouncePress(void){
-  if (bit_is_clear(BUTTON_PIN, BUTTON)){
-    _delay_ms(DEBOUNCE_TIME);
+uint8_t debouncePress(void){// static variable remembers its value between function calls
+  static uint8_t last_button_state = 1; // Assume 1 means unpressed (pull-up)
+
+  // Read the current physical state of the pin (0 if pressed, 1 if not)
+  uint8_t current_button_state = bit_is_clear(BUTTON_PIN, BUTTON) ? 0 : 1;
+
+  // Check for a FALLING EDGE (Transition from unpressed -> pressed)
+  if (last_button_state == 1 && current_button_state == 0) {
+    _delay_ms(DEBOUNCE_TIME); // Wait for bounce to settle
+
+    if (bit_is_clear(BUTTON_PIN, BUTTON)) { // If it's still pressed
+      last_button_state = 0; // Update our memory
+      return 1; // <-- Return 1 ONLY ONCE per press!
+    }
   }
-  if (bit_is_clear(BUTTON_PIN, BUTTON)){
-    return(1);
+  // Check for a RISING EDGE (Transition from pressed -> unpressed)
+  else if (last_button_state == 0 && current_button_state == 1) {
+    _delay_ms(DEBOUNCE_TIME); // Debounce the release too
+
+    if (!bit_is_clear(BUTTON_PIN, BUTTON)) { // If it's still released
+      last_button_state = 1; // Reset memory so it can be pressed again
+    }
   }
-  else{
-    return(0);
-  }
+
+  return 0; // Return 0 for all other cases
 }
 
 /*- model the button click as a final state machine -*/
@@ -99,20 +114,34 @@ void checkButtonDoubleClick(){
 
 
   //menu to choose the correct song
-  if (buttonState == 0 && debouncePress()){
-    first_click_millis = system_millis;                 /*Record the time of the button being pressed the first time*/
-    buttonState = 1;                                    /*Update the button state*/
-    playSong(playlist[0]);                              /*Play the first song*/
-  }
-  else if (buttonState == 1 && debouncePress() && (system_millis - first_click_millis) < 200){
-    buttonState = 2;                                    /*Update the button state*/
-    playSong(playlist[1]);                              /*Play the second song*/
+  if(debouncePress()){
+    if (buttonState == 0){
+      first_click_millis = system_millis;                 /*Record the time of the button being pressed the first time*/
+      buttonState = 1;                                    /*Update the button state*/
+      LED_PORT |= (1 << LED7);
+    }
+    else if (buttonState == 1 && (system_millis - first_click_millis) < 200) {
+      buttonState = 2;
+        LED_PORT &= ~(1 << LED7);
+      }
   }
 
+  if((system_millis - first_click_millis) > 200){         /*If the double click time is up, play the relavant song*/
+    if (buttonState == 1){
+      playSong(playlist[0]);                              /*Play the first song*/
+      buttonState = 0;
+    }
+    else if  (buttonState == 2){
+      playSong(playlist[1]);                              /*Play the second song*/
+      buttonState = 0;
+    }
+  }
+
+/*
   //stop playing song
   if ((buttonState == 1 || buttonState == 2) && debouncePress()){
     buttonState = 0;                                    /*Stop playing songs*/
-  }
+  //}*/
 }
 
 void playSong(uint16_t* song){
