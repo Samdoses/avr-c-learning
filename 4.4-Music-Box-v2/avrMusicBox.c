@@ -126,7 +126,7 @@ void checkButtonDoubleClick(){
       }
   }
 
-  if((system_millis - first_click_millis) > 2000){         /*If the double click time is up, play the relavant song*/
+  if((system_millis - first_click_millis) > 600){         /*If the double click time is up, play the relavant song*/
     if (buttonState == 1){
       playSong(playlist[0]);                              /*Play the first song*/
       buttonState = 0;
