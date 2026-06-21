@@ -121,7 +121,7 @@ void checkButtonDoubleClick(){
       first_click_millis = system_millis;                 /*Record the time of the button being pressed the first time*/
       buttonState = 1;                                    /*Update the button state*/
     }
-    else if (buttonState == 1 && (system_millis - first_click_millis) < 2000) {
+    else if (buttonState == 1) {
       buttonState = 2;
       }
   }
