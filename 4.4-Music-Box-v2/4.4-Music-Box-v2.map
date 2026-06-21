@@ -539,11 +539,11 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xa58
+.debug_info     0x00000000      0xa61
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
- .debug_info    0x000005f4      0x315 avrMusicBox.o
- .debug_info    0x00000909      0x14f organ.o
+ .debug_info    0x000005f4      0x31e avrMusicBox.o
+ .debug_info    0x00000912      0x14f organ.o
 
 .debug_abbrev   0x00000000      0x87c
  *(.debug_abbrev)
@@ -551,11 +551,11 @@ END GROUP
  .debug_abbrev  0x000005a2      0x1f6 avrMusicBox.o
  .debug_abbrev  0x00000798       0xe4 organ.o
 
-.debug_line     0x00000000      0x617
+.debug_line     0x00000000      0x623
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000       0x1d /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
- .debug_line    0x0000001d      0x41c avrMusicBox.o
- .debug_line    0x00000439      0x1de organ.o
+ .debug_line    0x0000001d      0x428 avrMusicBox.o
+ .debug_line    0x00000445      0x1de organ.o
 
 .debug_frame    0x00000000       0xb4
  *(.debug_frame)

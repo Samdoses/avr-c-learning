@@ -69,7 +69,7 @@ int main(void) {
 
   LED_DDR |= (1 << LED7);
 
-  sei();
+  sei();                                          /*Enables global interupts*/
 
   // ------ Event loop ------ //
   while (1) {
@@ -136,12 +136,6 @@ void checkButtonDoubleClick(){
       buttonState = 0;
     }
   }
-
-/*
-  //stop playing song
-  if ((buttonState == 1 || buttonState == 2) && debouncePress()){
-    buttonState = 0;                                    /*Stop playing songs*/
-  //}*/
 }
 
 void playSong(uint16_t* song){
@@ -150,7 +144,7 @@ void playSong(uint16_t* song){
 
   for (int whichNote = 0; song[whichNote] != 0xFFFF; whichNote++){
     playNote(song[whichNote], 300);
-    if (buttonState == 0){
+    if (debouncePress()){
       break;
     }
   }
