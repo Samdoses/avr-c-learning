@@ -69,6 +69,8 @@ int main(void) {
 
   LED_DDR |= (1 << LED7);
 
+  sei();
+
   // ------ Event loop ------ //
   while (1) {
     checkButtonDoubleClick();
@@ -118,15 +120,13 @@ void checkButtonDoubleClick(){
     if (buttonState == 0){
       first_click_millis = system_millis;                 /*Record the time of the button being pressed the first time*/
       buttonState = 1;                                    /*Update the button state*/
-      LED_PORT |= (1 << LED7);
     }
-    else if (buttonState == 1 && (system_millis - first_click_millis) < 200) {
+    else if (buttonState == 1 && (system_millis - first_click_millis) < 2000) {
       buttonState = 2;
-        LED_PORT &= ~(1 << LED7);
       }
   }
 
-  if((system_millis - first_click_millis) > 200){         /*If the double click time is up, play the relavant song*/
+  if((system_millis - first_click_millis) > 2000){         /*If the double click time is up, play the relavant song*/
     if (buttonState == 1){
       playSong(playlist[0]);                              /*Play the first song*/
       buttonState = 0;

@@ -276,7 +276,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x2c0
+.text           0x00000000      0x2ba
  *(.vectors)
  .vectors       0x00000000       0x68 /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
                 0x00000000                __vectors
@@ -373,22 +373,22 @@ END GROUP
                 0x00000134       0x30 avrMusicBox.o
                 0x00000134                playSong
  .text.checkButtonDoubleClick
-                0x00000164       0xd2 avrMusicBox.o
+                0x00000164       0xca avrMusicBox.o
                 0x00000164                checkButtonDoubleClick
  .text.startup.main
-                0x00000236       0x10 avrMusicBox.o
-                0x00000236                main
+                0x0000022e       0x12 avrMusicBox.o
+                0x0000022e                main
  .text.initTimer
-                0x00000246       0x3c organ.o
-                0x00000246                initTimer
+                0x00000240       0x3c organ.o
+                0x00000240                initTimer
  .text.playNote
-                0x00000282       0x3a organ.o
-                0x00000282                playNote
-                0x000002bc                        . = ALIGN (0x2)
+                0x0000027c       0x3a organ.o
+                0x0000027c                playNote
+                0x000002b6                        . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000002bc        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_exit.o)
-                0x000002bc                exit
-                0x000002bc                _exit
+ .fini9         0x000002b6        0x0 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_exit.o)
+                0x000002b6                exit
+                0x000002b6                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -407,17 +407,17 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000002bc        0x4 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_exit.o)
+ .fini0         0x000002b6        0x4 /usr/lib/gcc/avr/15.1.0/avr5/libgcc.a(_exit.o)
  *(.fini0)
  *(.hightext)
  *(.hightext*)
  *(.progmemx.*)
-                0x000002c0                        . = ALIGN (0x2)
+                0x000002ba                        . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
-                0x000002c0                        _etext = .
+                0x000002ba                        _etext = .
 
-.data           0x00800100      0x142 load address 0x000002c0
+.data           0x00800100      0x142 load address 0x000002ba
                 0x00800100                        PROVIDE (__data_start = .)
  *(.data)
  *(.data*)
@@ -454,8 +454,8 @@ END GROUP
                 0x00800247                system_millis
  *(COMMON)
                 0x0080024b                        PROVIDE (__bss_end = .)
-                0x000002c0                        __data_load_start = LOADADDR (.data)
-                0x00000402                        __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000002ba                        __data_load_start = LOADADDR (.data)
+                0x000003fc                        __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080024b        0x0
                 [!provide]                        PROVIDE (__noinit_start = .)
@@ -551,11 +551,11 @@ END GROUP
  .debug_abbrev  0x000005a2      0x1f6 avrMusicBox.o
  .debug_abbrev  0x00000798       0xe4 organ.o
 
-.debug_line     0x00000000      0x62f
+.debug_line     0x00000000      0x617
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000       0x1d /usr/lib/gcc/avr/15.1.0/../../../../avr/lib/avr5/crtatmega328p.o
- .debug_line    0x0000001d      0x434 avrMusicBox.o
- .debug_line    0x00000451      0x1de organ.o
+ .debug_line    0x0000001d      0x41c avrMusicBox.o
+ .debug_line    0x00000439      0x1de organ.o
 
 .debug_frame    0x00000000       0xb4
  *(.debug_frame)

@@ -18,7 +18,7 @@ void initTimer(void) {
   /*8-bit timer to increment other software timers*/
   TCCR0A |= (1 << WGM01);                                  /* CTC mode */
   TCCR0A |= (1 << COM0A0);           /* Toggles pin each cycle through */
-  TCCR0B |= (1 << CS00) | (1 << CS02);               /* CPU clock / 1024 */
+  TCCR0B |= (1 << CS00) | (1 << CS01);               /* CPU clock / 64 */
   TIMSK0 |= (1 << OCIE0A);                                  /* Enable Timer0 Compare Match Interrupt */
   TCNT0 = 0;                                      /* reset the counter */
   OCR0A = 249;                                    /* sends out an interupt every ms */
