@@ -67,7 +67,7 @@ int main(void) {
   SPEAKER_16_DDR |= (1 << SPEAKER_16);                 /* speaker for output */
   BUTTON_PORT |= (1 << BUTTON);                    /* pullup on button */
 
-  LED_DDR |= (1 << LED7);
+  STATUS_LED_DDR |= (1 << STATUS_LED);
 
   sei();                                          /*Enables global interupts*/
 
@@ -139,7 +139,7 @@ void checkButtonDoubleClick(){
 }
 
 void playSong(uint16_t* song){
-  LED_PORT |= (1 << LED7);                         /*Turn on status led*/
+  STATUS_LED_PORT |= (1 << STATUS_LED);                         /*Turn on status led*/
   SPEAKER_16_DDR |= (1 << SPEAKER_16);             /* enable speaker output */
 
   for (int whichNote = 0; song[whichNote] != 0xFFFF; whichNote++){
@@ -150,6 +150,6 @@ void playSong(uint16_t* song){
   }
 
   SPEAKER_16_DDR &= ~(1 << SPEAKER_16);             /* disable speaker output */
-  LED_PORT &= ~(1 << LED7);                         /*Turn off status led*/
+  STATUS_LED_PORT &= ~(1 << STATUS_LED);                         /*Turn off status led*/
 
 }
