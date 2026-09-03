@@ -6,6 +6,10 @@
 #define LED_PIN                 PIND
 #define LED_DDR                 DDRD
 
+#define STATUS_LED_PORT         PORTB
+#define STATUS_LED_DDR          DDRB
+#define STATUS_LED              PB4
+
 #define LED0                    PD0
 #define LED1                    PD1
 #define LED2                    PD2
@@ -22,6 +26,9 @@
 #define BUTTON                  PD2
 #define BUTTON2                 PD3
 #define BUTTON3                 PD4
+#define BUTTON4                 PD5
+#define BUTTON5                 PD6
+#define BUTTON6                 PD7
 
 #define SPEAKER                 PD6                            /* OC0A */
 #define SPEAKER_PORT            PORTD
