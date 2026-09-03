@@ -152,6 +152,7 @@ void playSong(uint16_t* song){
   for (int whichNote = 0; song[whichNote] != 0xFFFF; whichNote++){
     playNote(song[whichNote], 300);
     if (debouncePress()){
+      playNote(E4, 300); //sound to indicate that the song has been stopped
       break;
     }
   }
