@@ -20,6 +20,10 @@ void checkButtonDoubleClick();
 void playSong(uint16_t* song);
 
 /* -The notes of each song- */
+const uint16_t songStartup[] = {
+  D4, F4, A4, A4, 0xFFFF
+};
+
 const uint16_t song0[] = {
   G5, G5, G5, E5, E5, E5,
   C5, C5, C5, G4, G4, G4,
@@ -70,6 +74,9 @@ int main(void) {
   STATUS_LED_DDR |= (1 << STATUS_LED);
 
   sei();                                          /*Enables global interupts*/
+
+  // ------ Startup sound ------ //
+  playSong(songStartup);
 
   // ------ Event loop ------ //
   while (1) {
