@@ -64,33 +64,12 @@ uint16_t whichNote(){
   }
 }
 
-/*void initNote(uint16_t currentNote){
-  uint
-  if (currentNote != 0) {
-      LED_PORT |= (1 << PB4);
-      SPEAKER_16_DDR |= (1 << SPEAKER_16);
-      while (currentNote != 0) {
-        playNote(currentNote, 300);
-        currentNote = whichNote();
-      }
-      SPEAKER_16_DDR &= ~(1 << SPEAKER_16);
-      LED_PORT &= ~(1 << PB4);
-  }
-}*/
-
 void initNote(uint16_t currentNote){
   if (currentNote != 0) {
     STATUS_LED_PORT |= (1 << STATUS_LED);
     SPEAKER_16_DDR |= (1 << SPEAKER_16);             /* enable speaker output */
       playNote(currentNote, 50);
-//      currentNote = whichNote();                     /*update note*/
     SPEAKER_16_DDR &= ~(1 << SPEAKER_16);             /* disable speaker output */
     STATUS_LED_PORT &= ~(1 << STATUS_LED);
   }
 }
-
-
-/*
- BUGS
- *For some reason C4 / D4 always plays???
- */
