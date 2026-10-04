@@ -28,16 +28,16 @@ const uint16_t songStartup[] = {
 };
 
 const uint16_t song0[] = {
-  G5, G5, G5, E5, E5, E5,
-  C5, C5, C5, G4, G4, G4,
-  A4, B4, C5, A4, A4, C5,
-  G4, G4, G4, G4, G4, G4,
-  D5, D5, D5, G5, G5, G5,
-  E5, E5, E5, C5, C5, C5,
-  A4, B4, C5, D5, D5, E5,
-  D5, D5, D5, D5, D5,
-  E5, F5, E5, D5, G5, G5,
-  E5, D5, C5, C5, C5, C5,
+  G4, G4, G4, E4, E4, E4,
+  C4, C4, C4, G3, G3, G3,
+  A3, B3, C4, A3, A3, C4,
+  G3, G3, G3, G3, G3, G3,
+  D4, D4, D4, G4, G4, G4,
+  E4, E4, E4, C4, C4, C4,
+  A3, B3, C4, D4, D4, E4,
+  D4, D4, D4, D4, D4,
+  E4, F4, E4, D4, G4, G4,
+  E4, D4, C4, C4, C4, C4,
   0xFFFF, /*The stop note*/
 };
 
