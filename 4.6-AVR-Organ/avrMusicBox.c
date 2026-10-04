@@ -28,11 +28,10 @@ int main(void) {
   playNote(A4, 300);
   SPEAKER_16_DDR &= ~(1 << SPEAKER_16);                 /* speaker for output */
 
-  LED_DDR |= (1 << PB4);
+  STATUS_LED_DDR |= (1 << STATUS_LED);
 
   // ------ Event loop ------ //
   while (1) {
-    whichNote();
     initNote(whichNote());
   }                                            /* End event loop */
   return 0;
@@ -78,12 +77,12 @@ uint16_t whichNote(){
 
 void initNote(uint16_t currentNote){
   if (currentNote != 0) {
-    LED_PORT |= (1 << PB4);
+    STATUS_LED_PORT |= (1 << STATUS_LED);
     SPEAKER_16_DDR |= (1 << SPEAKER_16);             /* enable speaker output */
       playNote(currentNote, 300);
 //      currentNote = whichNote();                     /*update note*/
     SPEAKER_16_DDR &= ~(1 << SPEAKER_16);             /* disable speaker output */
-    LED_PORT &= ~(1 << PB4);
+    STATUS_LED_PORT &= ~(1 << STATUS_LED);
   }
 }
 
