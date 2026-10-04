@@ -18,14 +18,15 @@ void initNote(uint16_t currentNote);
 int main(void) {
   // -------- Inits --------- //
   initTimer();                                      /*initialise the timers*/
-  SPEAKER_16_DDR |= (1 << SPEAKER_16);                 /* speaker for output */
   BUTTON_PORT |= ALL_BUTTONS;                    /* pullup on button */
 
   //STARTUP SOUNTS
+  SPEAKER_16_DDR |= (1 << SPEAKER_16);                 /* speaker for output */
   playNote(D4, 300);
   playNote(F4, 300);
   playNote(A4, 300);
   playNote(A4, 300);
+  SPEAKER_16_DDR &= ~(1 << SPEAKER_16);                 /* speaker for output */
 
   LED_DDR |= (1 << PB4);
 
@@ -61,15 +62,28 @@ uint16_t whichNote(){
   }
 }
 
-void initNote(uint16_t currentNote){
+/*void initNote(uint16_t currentNote){
+  uint
   if (currentNote != 0) {
       LED_PORT |= (1 << PB4);
-      SPEAKER_16_DDR |= (1 << SPEAKER_16);             /* enable speaker output */
+      SPEAKER_16_DDR |= (1 << SPEAKER_16);
       while (currentNote != 0) {
         playNote(currentNote, 300);
+        currentNote = whichNote();
       }
-      SPEAKER_16_DDR &= ~(1 << SPEAKER_16);             /* disable speaker output */
+      SPEAKER_16_DDR &= ~(1 << SPEAKER_16);
       LED_PORT &= ~(1 << PB4);
+  }
+}*/
+
+void initNote(uint16_t currentNote){
+  if (currentNote != 0) {
+    LED_PORT |= (1 << PB4);
+    SPEAKER_16_DDR |= (1 << SPEAKER_16);             /* enable speaker output */
+      playNote(currentNote, 300);
+//      currentNote = whichNote();                     /*update note*/
+    SPEAKER_16_DDR &= ~(1 << SPEAKER_16);             /* disable speaker output */
+    LED_PORT &= ~(1 << PB4);
   }
 }
 
