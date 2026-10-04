@@ -39,22 +39,22 @@ int main(void) {
 
 uint16_t whichNote(){
   if (bit_is_clear(BUTTON_PIN, BUTTON)) { /* If button 1 is pressed */
-    return 0;     /* Return button 1 note */
+    return C4;     /* Return button 1 note */
   }
   else if (bit_is_clear(BUTTON_PIN, BUTTON2)) { /* If button 2 is pressed*/
-    return C4;     /* Return button 2 note etc */
+    return D4;     /* Return button 2 note etc */
   }
   else if (bit_is_clear(BUTTON_PIN, BUTTON3)) {
-    return D4;
-  }
-  else if (bit_is_clear(BUTTON_PIN, BUTTON4)) {
     return E4;
   }
-  else if (bit_is_clear(BUTTON_PIN, BUTTON5)) {
+  else if (bit_is_clear(BUTTON_PIN, BUTTON4)) {
     return F4;
   }
-  else if (bit_is_clear(BUTTON_PIN, BUTTON6)) {
+  else if (bit_is_clear(BUTTON_PIN, BUTTON5)) {
     return G4;
+  }
+  else if (bit_is_clear(BUTTON_PIN, BUTTON6)) {
+    return 0;
   }
   else{
     return 0;     /* No buttons are currently being pressed */
@@ -79,7 +79,7 @@ void initNote(uint16_t currentNote){
   if (currentNote != 0) {
     STATUS_LED_PORT |= (1 << STATUS_LED);
     SPEAKER_16_DDR |= (1 << SPEAKER_16);             /* enable speaker output */
-      playNote(currentNote, 300);
+      playNote(currentNote, 50);
 //      currentNote = whichNote();                     /*update note*/
     SPEAKER_16_DDR &= ~(1 << SPEAKER_16);             /* disable speaker output */
     STATUS_LED_PORT &= ~(1 << STATUS_LED);
