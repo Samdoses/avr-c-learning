@@ -19,16 +19,19 @@ int main(void) {
   // -------- Inits --------- //
   initTimer();                                      /*initialise the timers*/
   BUTTON_PORT |= ALL_BUTTONS;                    /* pullup on button */
+  STATUS_LED_DDR |= (1 << STATUS_LED);
 
   //STARTUP SOUNTS
   SPEAKER_16_DDR |= (1 << SPEAKER_16);                 /* speaker for output */
+  STATUS_LED_PORT |= (1 << STATUS_LED);
   playNote(D4, 300);
   playNote(F4, 300);
   playNote(A4, 300);
   playNote(A4, 300);
+  SPEAKER_16_DDR &= ~(1 << SPEAKER_16);
   SPEAKER_16_DDR &= ~(1 << SPEAKER_16);                 /* speaker for output */
 
-  STATUS_LED_DDR |= (1 << STATUS_LED);
+
 
   // ------ Event loop ------ //
   while (1) {
