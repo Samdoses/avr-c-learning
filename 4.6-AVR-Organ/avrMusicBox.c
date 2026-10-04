@@ -9,6 +9,7 @@
 
 #define SONG_LENGTH  (sizeof(song) / sizeof(uint16_t))
 #define DEBOUNCE_TIME 8
+#define ALL_BUTTONS ((1 << BUTTON) | (1 << BUTTON2) | (1 << BUTTON3) | (1 << BUTTON4) | (1 << BUTTON5) | (1 << BUTTON6))
 
 /*- Method declaratins (You could make a .h interface later to make the code neater?) -*/
 uint16_t whichNote();
@@ -18,7 +19,13 @@ int main(void) {
   // -------- Inits --------- //
   initTimer();                                      /*initialise the timers*/
   SPEAKER_16_DDR |= (1 << SPEAKER_16);                 /* speaker for output */
-  BUTTON_PORT |= (1 << BUTTON);                    /* pullup on button */
+  BUTTON_PORT |= ALL_BUTTONS;                    /* pullup on button */
+
+  //STARTUP SOUNTS
+  playNote(D4, 300);
+  playNote(F4, 300);
+  playNote(A4, 300);
+  playNote(A4, 300);
 
   LED_DDR |= (1 << PB4);
 
@@ -65,3 +72,9 @@ void initNote(uint16_t currentNote){
       LED_PORT &= ~(1 << PB4);
   }
 }
+
+
+/*
+ BUGS
+ *For some reason C4 / D4 always plays???
+ */
